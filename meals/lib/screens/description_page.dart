@@ -13,12 +13,7 @@ class _DescrtiptionCardState extends State<DescrtiptionCard> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Description Meal',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black, brightness: Brightness.dark),
-      ),
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Center(child: Text(widget.cardDescription['title'])),
           leading: IconButton(
@@ -36,7 +31,9 @@ class _DescrtiptionCardState extends State<DescrtiptionCard> {
               });
 
               final snackBar = SnackBar(content: Text(_isFavorite ? 'Added to Favorites' : 'Removed from Favorites'),);
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(snackBar);
             },
           ),],
         ),
@@ -64,15 +61,24 @@ class _DescrtiptionCardState extends State<DescrtiptionCard> {
             ],
           ),
         ),
-        // Center(
-        //   child: ElevatedButton(
-        //     onPressed: () {
-        //       Navigator.pop(context);
-        //     },
-        //     child: const Text('Go back!'),
-        //   ),
-        // ),
+      );
+  }
+}
+
+class DescriptionPageHome extends StatelessWidget {
+
+  final Map<String, dynamic> cardDescription;
+  const DescriptionPageHome({Key? key, required this.cardDescription}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Description Meal',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black, brightness: Brightness.dark),
       ),
+      home: DescrtiptionCard(cardDescription: cardDescription),
     );
   }
+
 }

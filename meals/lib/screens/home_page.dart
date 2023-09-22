@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DescrtiptionCard(cardDescription: cardDescription[index]),
+                    builder: (context) => DescriptionPageHome(cardDescription: cardDescription[index]),
                   ),
                 );
               },
