@@ -42,25 +42,52 @@ class _DescrtiptionCardState extends State<DescrtiptionCard> {
           child: Column(
             children: [
               Image(image: AssetImage(widget.cardDescription['image']), fit: BoxFit.cover, width: 400, height: 230,),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text('Ingredients', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 245, 113, 106)),),
-              ),
+
+              const TitleWidget(textMessage: 'Ingredients',),
+
+              DescriptionText(text: widget.cardDescription['ingredients'].toString()),
         
-              Center(child: Text(widget.cardDescription['ingredients'].toString().replaceAll('\n', '\n\n'), 
-                                  textAlign: TextAlign.center,)),
-        
-              const Padding(
-                padding: EdgeInsets.only(top: 20.0, bottom: 8.0),
-                child: Text('Steps', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 245, 113, 106)),),
-              ),
-        
-              Center(child: Text(widget.cardDescription['steps'].toString().replaceAll('\n', '\n\n'), 
-                                  textAlign: TextAlign.center,)),
+              const TitleWidget(textMessage: 'Steps',),
+
+              DescriptionText(text: widget.cardDescription['steps'].toString()),
         
             ],
           ),
         ),
       );
+  }
+}
+
+class TitleWidget extends StatefulWidget {
+  final String textMessage;
+  const TitleWidget({Key? key, required this.textMessage}) : super(key: key, );
+
+  @override
+  State<TitleWidget> createState() => _TitleWidget();
+}
+
+class _TitleWidget extends State<TitleWidget>{
+    @override
+  Widget build(BuildContext context) {
+    return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(widget.textMessage, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 245, 113, 106)),),
+              );
+  }
+}
+
+class DescriptionText extends StatelessWidget {
+  final String text;
+
+  const DescriptionText({Key? key, required this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        text.toString().replaceAll('\n', '\n\n'),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 }
