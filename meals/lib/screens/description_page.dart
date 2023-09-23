@@ -64,21 +64,3 @@ class _DescrtiptionCardState extends State<DescrtiptionCard> {
       );
   }
 }
-
-class DescriptionPageHome extends StatelessWidget {
-
-  final Map<String, dynamic> cardDescription;
-  const DescriptionPageHome({Key? key, required this.cardDescription}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Description Meal',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black, brightness: Brightness.dark),
-      ),
-      home: DescrtiptionCard(cardDescription: cardDescription),
-    );
-  }
-
-}

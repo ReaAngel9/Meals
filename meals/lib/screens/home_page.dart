@@ -1,18 +1,17 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
+
 import 'package:meals/data/constants.dart';
+import 'package:meals/screens/description_page.dart';
 
-import 'description_page.dart';
-
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<HomePage> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<HomePage> {
 
   List<dynamic> cardDescription = [];
 
@@ -24,12 +23,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Meals',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black, brightness: Brightness.dark),
-      ),
-      home: Scaffold(
+    return 
+      Scaffold(
         appBar: AppBar(
           title: const Center(child: Text('Quick & Easy')),
         ),
@@ -45,7 +40,7 @@ class _MyAppState extends State<MyApp> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DescriptionPageHome(cardDescription: cardDescription[index]),
+                    builder: (context) => DescrtiptionCard(cardDescription: cardDescription[index]),
                   ),
                 );
               },
@@ -96,7 +91,7 @@ class _MyAppState extends State<MyApp> {
             },
           )
         ),
-      ),
-    );
+      );
   }
 }
+
